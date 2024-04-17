@@ -2,7 +2,5 @@ User-agent: *
 Disallow: /categories
 Disallow: /tags
 Disallow: /assets
-Disallow: /site
+Disallow: /search/
 Allow: /
-Sitemap: /sitemap.xml
-Sitemap: /feed.xml
