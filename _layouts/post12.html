@@ -1,0 +1,320 @@
+---
+layout: default
+disqus: false
+archive: false
+post_class: post-template
+---
+
+<!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            {% include share.html %}
+        </div>
+
+        <!-- Post -->
+        {% assign author = site.authors[page.author] %}
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">{{ page.title }}</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            {% if site.adsense == "enabled" %}
+                {% include adsense-under-header.html %}
+            {% endif %}
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            {% if page.image %}
+
+            {% if site.lazyimages == "enabled" %}
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            {% else %}
+            <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            {% endif %}
+
+            {% endif %}
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                {% if page.toc %}
+                    {% if page.beforetoc %}
+                        <p><em>{{page.beforetoc}}</em></p>
+                    {% endif %}
+                    <div class="toc mt-4 mb-4 lead">
+                        <h3 class="font-weight-bold">Summary</h3>
+                        {% include toc.html html=content %}
+                    </div>
+                {% endif %}
+                <!-- End Toc -->
+               
+                <style media='all' type='text/css'>
+.bwstoc {
+ margin: 10px 0;
+ background: #F0F0F0;
+ border: 1px solid #ddd;
+}
+.bwstoc ol, .bwstoc ul {
+ margin: 0 0 15px 20px;
+ padding: 0;
+}
+.bwstoc ul {
+ list-style: disc;
+}
+.bwstoc ol li, .bwstoc ul li {
+ font-size: 95%;
+ padding: 5px 10px 0 0;
+ margin: 0 0 0 30px;
+}
+.bwstoc a {
+ text-decoration: none;
+}
+.bwstoc a:hover {
+ text-decoration: underline;
+}
+.bwstoc .bwstocHeader {
+ font-weight: bold;
+ font-size: 100%;
+ position: relative;
+ outline: none;
+ border: none;
+ padding: 5px 15px 5px 5px;
+ margin: 5px 10px;
+}
+.bwstoc .bwstocHeader a {
+ text-decoration: none;
+ cursor: pointer;
+}
+.bwstoc .bwstocHeader a:hover {
+ text-decoration: underline;
+}
+</style>
+<!-- Blogger TOC -->
+<script type='text/javascript'>
+//<![CDATA[
+function bwstoc() {
+ var bwstoc = i = headinglength = getheading = 0;
+ headinglength = document.getElementById("post-toc").querySelectorAll("h2, h3, h4").length;
+ if (headinglength > 1) { 
+ // Hanya Tampil Jika Ditemukan Minimal 2 Heading
+ for (i = 0; i < headinglength; i++) {
+ getheading = document.getElementById("post-toc").querySelectorAll("h2, h3, h4")[i].textContent;
+ var bws_1 = getheading.replace(/[^a-z0-9]/gi," ");
+ var bws_2 = bws_1.trim();
+ var getHeadUri = bws_2.replace(/s/g, "_");
+ document.getElementById("post-toc").querySelectorAll("h2, h3, h4")[i].setAttribute("id", getHeadUri);
+ bwstoc = "<li><a href='#" + getHeadUri + "'>" + getheading + "</a></li>";
+ document.getElementById("bwstoc").innerHTML += bwstoc;
+ }
+ } else { document.write("<style>.bwstoc{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;}</style>"); }
+}
+function bwstocShow() {
+    var bwstocBtn = document.getElementById('bwstoc');
+ var bwstocWrapID = document.getElementById('bwstocwrap');
+ var bwstocLink = document.getElementById('bwstocLink');
+    if (bwstocBtn.style.display === 'none') {
+        bwstocBtn.style.display = 'block';
+ bwstocWrapID.style.display = 'block';
+ bwstocLink.innerHTML = 'Content :';
+ 
+    } else {
+        bwstocBtn.style.display = 'none';
+ bwstocWrapID.style.display = 'inline-block';
+ bwstocLink.innerHTML = 'Content :';
+    }
+}
+//]]>
+</script>
+<noscript><style media='all' type='text/css'>#bwstocwrap,.bwstoc{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;}</style></noscript>
+
+<div id='post-toc'>
+
+
+
+<div id='bwstocwrap' class='bwstoc' style='display:inline-block;'><div class='bwstocHeader'><a id='bwstocLink' onclick='bwstocShow()'>Content :</a></div><ul id='bwstoc' style='display:none'></ul></div>
+
+
+<!--tuliskonten disini 🥰🥰🥰🥰🥰🥰 -->
+{{content}}
+<a id="show_id" onclick="document.getElementById('spoiler_id').style.display=''; document.getElementById('show_id').style.display='none';"></a><span id="spoiler_id" style="display: none;"><a class="link" onclick="document.getElementById('spoiler_id').style.display='none'; document.getElementById('show_id').style.display='';"></a>
+<div style="background-color: rgba(0, 0, 0, 0); margin: 1px;">
+<div class="smallfont"><i><span style="font-size: 16px; font-weight: bold; margin-right: 3px;"></span></i><input onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = ''; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = ''; }" style="background-color: #00000000; font-size: 16px; width: auto;" type="button" value="" />
+</div>
+<div class="alt2" style="background-color: rgba(255, 255, 255, 0); margin: 0px; padding: 0px;">
+<div style="display: none;" loading="lazy">
+
+
+
+mizzimie	,	mewnittha	,	 jharionne	,	 thesokakfeneri	,	CİVATA SANDIZ GALİBA	,	monyaywak	,	de.18899	,	 somayeh kiani2	,	نسیم امیرپور	,	yxii91 	,	baanisandhufanclub.in	,	Dokutah	,	Resmi R Nair	,	Gisselle Watson	,	kulinerjambiinfo diannadeestarlight	,	 lacey nz	,	ilanosh fridman - יוצרת תוכן	,
+Mizzi 💚	,	mewnittha	,	jharionne	,	thesokakfeneri	,	 sadecekedipaylasimlari	,	MONY AYWAK 🌟	,	 mrcut.shahrokh	,	somayeh kiani2	,	 arezo.4a	,	صدفهـه 🔖🖤	,	Baani Sandhu™	,	otaku_anime_indonesia	,	shambhavi1997	,	megan_thn2	,	Dianna Dee starlight	,	lacey nz	,	 moneybirdette	,
+nikkiblades	,	Mewnittha	,	Jharionne Anderson	,	The Sokak Feneri	,	sadecekedipaylasimlari	,	 pretalay01	,	mrcut.shahrokh	,	somayeh	,	arezo.4a	,	 rashamayhob	,	 saravalentinasv	,	otaku_anime_indonesia	,	shambhavi1997	,	megan_thn2	,	folkshitt 	,	Lacey	,	moneybirdette	,
+nikkiblades	,	julissalatoxicaa	,	 justt.kam	,	 melek xq.01	,	 ahu sisli	,	pretalay01	,	Shahrokh Arbab شاهرخ ارباب	,	 azita.fax2	,	🔹فالو ڪنید با ما همراه باشیـد🔹	,	rashamayhob	,	saravalentinasv	,	Otaku Anime Indonesia	,	Shambhavi Singh	,	Megan thn	,	folkshitt	,	 harjinder kaur pb03	,	Dara Ann Gadziala	,
+Nikki Blades	,	julissalatoxicaa	,	justt.kam	,	melek xq.01	,	ahu sisli	,	Preta_lay🦋	,	 saraa sadegi2030	,	azita.fax2	,	 somayeh kiani2	,	Rasha M Mayhob	,	Sara Valentina👑	,	natharineavr	,	sofia9__official	,	saloxmelon	,	FOLKSHIT™	,	harjinder kaur pb03	,	 adina.tatiana	,
+katianakatz tv	,	Julissa 🇲🇽	,	Kam, Esq.	,	『𝓶𝓮𝓵𝓮𝓴❤︎』	,	Ahu Şişli	,	 ayyejonn	,	saraa sadegi2030	,	azita.fax2	,	somayeh kiani2	,	 nour ahmad1a	,	 dimple nyx	,	natharineavr	,	sofia9__official	,	saloxmelon	,	officecrushanna 	,	Mohan Mohan	,	adina.tatiana	,
+katianakatz tv	,	roses are rosie	,	 chocolate_queen247	,	 buseekurtt	,	 tubadadasoglu	,	ayyejonn	,	 clip fun khas	,	 pari.kurdz	,	somayeh	,	nour ahmad1a	,	dimple nyx	,	𝒩𝒶𝓉𝒽𝒶𝓇𝒾𝓃𝑒 𝒜𝓋𝑒𝓇𝒾𝓃𝒶	,	Sofia Ansari	,	Salomé	,	officecrushanna	,	 asmitachaudhary722	,	𝑨𝒅𝒊𝒏𝒂 𝑻𝒂𝒕𝒊𝒂𝒏𝒂	,
+Katiana Katz	,	roses are rosie	,	chocolate_queen247	,	buseekurtt	,	tubadadasoglu	,	 deenah.j_	,	clip fun khas	,	pari.kurdz	,	 aydawmod	,	Nour	,	Dipshikha Roy	,	sheryljesslyn	,	prakritipavani	,	serenaboux_f	,	Annallese Taylor	,	asmitachaudhary722	,	 elaina_judithh	,
+  suhuuu  	,	ROSÉ	,	Ebbonni	,	Buse kurt	,	Tuba Dadaşoğlu	,	deenah.j_	,	شما را دنبال میکند	,	پری	,	aydawmod	,	 e2emoo	,	 diva  flawless	,	sheryljesslyn	,	prakritipavani	,	serenaboux_f	,	kkubi99 	,	Asmita Chaudhary	,	elaina_judithh	,
+  suhuuu  	,	rung nuhin	,	 blackculturenews_	,	 francisca alvarezz	,	 sevdalim  0707	,	الدين	,	 zahrafatehi79	,	 nilovmd	,	ayda ⚛	,	e2emoo	,	diva  flawless	,	ONIC Sze	,	Prakriti Pavani ♛	,	Serena Boux 💞	,	kkubi99 전지은	,	 rupa  goyal	,	Personal trainer in Chernivtsi 🦾	,
+SUHANA KHAN	,	rung nuhin	,	blackculturenews_	,	francisca alvarezz	,	sevdalim  0707	,	 achan.mp	,	zahrafatehi79	,	nilovmd	,	 twoferi	,	Eman Ameen	,	Diva Flawless	,	roses_are_rosie	,	ayeshaakhan_official	,	brigitte_bardot34	,	celinemariee_x 	,	rupa  goyal	,	 realajapplegate	,
+ penatorres	,	รุ้ง ราวรรณ โทนะหงษา	,	Black Culture News	,	Francisca	,	Sevdalim  0707	,	achan.mp	,	 shahbanou farah pahlavi	,	فکت؛ اخبار؛ حواشی	,	twoferi	,	 zaynsofuoglu	,	  neha chouhan 6789	,	roses_are_rosie	,	ayeshaakhan_official	,	brigitte_bardot34	,	celinemariee_x	,	Rupa Goyal	,	realajapplegate	,
+ penatorres	,	noon spt1	,	 nategatsby	,	 35beritaanx	,	 demetelloo	,	 iyanamikhol	,	shahbanou farah pahlavi	,	 chavan kurdstan	,	fereshteh haghlesan	,	zaynsofuoglu	,	 neha chouhan 6789	,	ROSÉ	,	Ayesha Khan	,	Brigitte Bardot Fan Page	,	Celine	,	 qismat.cour	,	𝐀𝐉	,
+morenawithparadisegirls	,	noon spt1	,	nategatsby	,	35beritaanx	,	demetelloo	,	iyanamikhol	,	Farah Pahlavi   فرح پهلوی	,	chavan kurdstan	,	 expe.rience652	,	Zayn Sofuoğlu🇹🇷🇳🇱🇩🇿	,	Queen neha	,	amnda_ef	,	sassy_poonam	,	neulena_777	,	xiaofeng202208 	,	qismat.cour	,	 crisanamariyah	,
+morenawithparadisegirls	,	Spt sps	,	Nate Johnson	,	🐆 Beɾitɑɳ Siɳcɑɾ 🐆	,	Demet Elloo	,	Yani	,	 wahd5741	,	😊🌸چاوان کوردستان🌸😊	,	expe.rience652	,	 zaynab    1998	,	 sareegramm	,	amnda_ef	,	sassy_poonam	,	neulena_777	,	xiaofeng202208	,	 sujana9721	,	crisanamariyah	,
+Morena Mitch	,	kigrungnapha	,	 thephantumlashea	,	 dalgadeniz 	,	 queen   marta	,	 knightingale_official	,	wahd5741	,	 tanzfatiiii	,	 fatemeh 75876	,	zaynab    1998	,	sareegramm	,	nitavior store	,	Sassy poonam	,	Lena 🇩🇪	,	xyz夏ー季ー八ー食	,	sujana9721	,	Crisana〽️ariyah	,
+morenamitchworld	,	kigrungnapha	,	thephantumlashea	,	dalgadeniz 	,	queen   marta	,	knightingale_official	,	واحد سابکی	,	tanzfatiiii	,	fatemeh 75876	,	ﹻﹻﹻﹻﹻ زينہبہﹷٰۦ،ۦٰٰ ﹻﹻﹻﹻﹻ	,	Sareegramm	,	nitavior store	,	thenidhichaudhary	,	portselfy	,	fbyana 	,	Sujana Karki	,	 ava.addams.fanpage	,
+morenamitchworld	,	กิ๊ก รุ่งนภา	,	Phantum LaShea	,	dalgadeniz	,	Marta👑	,	Nightingale Akalkal	,	 shalu786  	,	ftim	,	iraoora	,	 dimaaslan.official	,	 aamir trt  06	,	Viorenita Sutanto	,	thenidhichaudhary	,	portselfy	,	fbyana	,	 moktan2648	,	ava.addams.fanpage	,
+Morena Mitch	,	glowtik	,	 sn0rti	,	 elif.ckr2007	,	 steffa paez0	,	 dopesudania	,	shalu786  	,	 picoace	,	 ayda dox	,	dimaaslan.official	,	aamir trt  06	,	vici dior	,	Nidhi Chaudhary	,	emmanuelrestrepozapata	,	Fbyana   pratiwinoviyanthi_real 	,	moktan2648	,	 festaqoqaj	,
+fernanda barhern	,	glowtik	,	sn0rti	,	elif.ckr2007	,	steffa paez0	,	dopesudania	,	shalu sharma	,	picoace	,	ayda dox	,	DİMA ASLAN   ديما اصلان	,	AAMIR TRT  06	,	vici dior	,	shubhnagrwal	,	emmanuelrestrepozapata	,	pratiwinoviyanthi_real	,	Sabina moktan	,	festaqoqaj	,
+fernanda barhern	,	Fashion  Beauty  Inspiration 🦋	,	🇺🇸snörti 🇱🇷	,	elif	,	 cawresyuce76	,	 aminata_s	,	 shimaxm	,	Follows you	,	ayda dox	,	  dr.7lm	,	 itsjameskennedy	,	vici dior	,	shubhnagrwal	,	Emmanuel Restrepo Zapata	,	pratiwinoviyanthi	,	 yabesh diyali7	,	FESTA QOQAJ	,
+fernanda barhern	,	oomsakaojai	,	 nyasia.monroe	,	 busrrakrtt	,	cawresyuce76	,	aminata_s	,	shimaxm	,	 narges .org 	,	 pikaju04	,	 dr.7lm	,	itsjameskennedy	,	xmtthwkm	,	Shubhna Agarwal	,	playmodell	,	tukangkeliling.id 	,	yabesh diyali7	,	 nikkibenz	,
+masymxo	,	oomsakaojai	,	nyasia.monroe	,	busrrakrtt	,	Reklam ve iş birligi için dm 🤞	,	AMINATA 🌈	,	شیما 🍒	,	narges .org 	,	pikaju04	,	عِـراقيَّـة جـدًا	,	James Kennedy	,	xmtthwkm	,	itskomalxo	,	playmodell	,	tukangkeliling.id	,	 piya ki jaan 123	,	nikkibenz	,
+masymxo	,	Sakaojai Poonsawatd	,	NYASIA 🦋	,	Büşra🪬	,	 top.znakomstva.top	,	 nyajuuokk	,	 maryam rajpoot8	,	‌دابسمش ویدئو روزمرگی موزیک	,	Ju X You	,	 iiits.mimiii	,	 sammythighsreels	,	vicidiorrr	,	itskomalxo	,	Playa♥️	,	Tukangkeliling ID	,	piya ki jaan 123	,	Nikki Benz	,
+♡	,	thitikarn 2106	,	 itmeans_faith	,	 bedir altnpck.0	,	top.znakomstva.top	,	nyajuuokk	,	maryam rajpoot8	,	 daryafw	,	 qaahng69	,	iiits.mimiii	,	sammythighsreels	,	vicidiorrr	,	Komal 🥂	,	jaquelline	,	widiariska.p 	,	Anaya Patel	,	 ash.bbyyy	,
+kungfu nunchaku gym dance	,	thitikarn 2106	,	itmeans_faith	,	bedir altnpck.0	,	 altasweettabar	,	Nyajuok	,	Maryam Rajpoot	,	daryafw	,	qaahng69	,	ما🌙يان	,	Sammy Thighs	,	vicidior	,	witchymoye	,	jaquelline	,	widiariska.p	,	 analiixo	,	ash.bbyyy	,
+kungfu nunchaku gym dance	,	ใบ ตาล	,	Iman Cassie Brown	,	 alfa  officiall	,	altasweettabar	,	 anyang_deng	,	 video pic khas1	,	مستطیل آبی رو سفید کن🤭	,	អា ហ័ង	,	 makeup by bilasan	,	 mrskattycakes	,	taaarannn	,	witchymoye	,	Jaquelline	,	widia riska p	,	analiixo	,	Ashley Veras	,
+Kungfu Gym Girl Nunchaku	,	maggiapa	,	 shanycethepompilus	,	alfa  officiall	,	Alta Sweet Tabar🍭	,	anyang_deng	,	video pic khas1	,	 mahsah110	,	 darya.shirin556	,	makeup by bilasan	,	mrskattycakes	,	taaarannn	,	Maanya 🦋	,	isabela_raamireez	,	viptoriaaaa emilystar.ai	,	Anali 💖	,	 realladytarzan	,
+jessicasuchxo	,	maggiapa	,	shanycethepompilus	,	🔥Rıdvan Erden🔥	,	 frolova fox	,	Anyang Deng	,	کلیپ عاشقانه	,	mahsah110	,	darya.shirin556	,	Bailasan Ajjawi	,	Harmony Jones	,	dasha taran	,	komalflix	,	isabela_raamireez	,	Emily Star	,	 elina syakila21	,	realladytarzan	,
+jessicasuchxo	,	Apa Bhavilai	,	Shanyce💗	,	 aleynakaya0607	,	frolova fox	,	 nnyaan_k	,	 parlfw	,	مهسا	,	 zemzemeh haye man1360	,	 leaa.nit	,	 juicyjaimiesmiles	,	delaniprisilia_	,	komalflix	,	ISABELA RAMIREZ	,	tukangmajo.plg 	,	elina syakila21	,	Lady Tarzan	,
+Jess Such	,	anyarinsweet	,	 tashadeesse	,	aleynakaya0607	,	Ксения Фролова 🦊Поэт. Чтец. Стихи на заказ	,	nnyaan_k	,	parlfw	,	 ayda dox	,	zemzemeh haye man1360	,	leaa.nit	,	juicyjaimiesmiles	,	delaniprisilia_	,	Komal 🦋	,	andzior74	,	tukangmajo.plg	,	Elina syakila	,	 kadellesamuals_	,
+ivenscheekss	,	anyarinsweet	,	tashadeesse	,	aleynakaya0607	,	 rach.summers 	,	Nya	,	پری 🍒	,	ayda dox	,	 azita.fax2	,	 nathaliapiemont	,	 misserikaamore	,	lydiaaas__	,	anumtafaisal	,	andzior74	,	KULINERAN PALEMBANG	,	 essukarki	,	kadellesamuals_	,
+ivenscheekss	,	anyarinsweetie	,	Tasha Déesse	,	 ggizemnur21	,	rach.summers 	,	 kristineachayo	,	 sana video8	,	ayda dox	,	azita.fax2	,	nathaliapiemont	,	misserikaamore	,	lydiaaas__	,	anumtafaisal	,	🦋 Anna Zawadka 🦋	,	jakarta.keras 	,	essukarki	,	Kadelle Samuals	,
+Ivens Peach 🍑	,	urassayas	,	 saleema2rite	,	ggizemnur21	,	Rachel Summers	,	kristineachayo	,	sana video8	,	 negar.iov	,	azita.fax2	,	Nathalia Piemont	,	Erika Amore	,	ONIC Lydia	,	Anumta Faisal Siddiqui	,	dahyam_morales	,	jakarta.keras	,	Essu Karki	,	 morgan_lanexo	,
+yessicaborjahiguita	,	urassayas	,	saleema2rite	,	Gizem Nur	,	 nuraydnzz1	,	K R I S T I N E . A	,	کلیپ عاشقانه	,	negar.iov	,	 zahra.zz40	,	 nancyhouranii	,	 bongtrending4u	,	gabagtha	,	imahnoor khann	,	dahyam_morales	,	JAKARTA KERAS	,	 kalpanasingh1225	,	morgan_lanexo	,
+yessicaborjahiguita	,	Urassaya Sperbund	,	Saleema	,	 1meljkee	,	nuraydnzz1	,	 checkoutafrica_	,	 iran.psychology1	,	 atinab.x	,	zahra.zz40	,	nancyhouranii	,	bongtrending4u	,	gabagtha	,	imahnoor khann	,	Dahyam Morales	,	326n.h2 	,	kalpanasingh1225	,	 micaluciax	,
+Yessica Borja Higuita	,	newclear hansa	,	 lovecass_	,	1meljkee	,	Nuray Deniz	,	checkoutafrica_	,	iran.psychology1	,	atinab.x	,	زهراجون	,	Nancy Hourani   نانسي الحوراني	,	BongTrending4u	,	gabriella	,	Mahnoor Khan	,	upsoclmuvi	,	326n.h2 유백합	,	Kalpana Singh	,	micaluciax	,
+pesopluma	,	newclear hansa	,	lovecass_	,	Meli 🍭	,	 rojin akn 30	,	Africa | Lifestyle | People	,	در مخاطبین شما	,	آتینا شما را دنبال میکند	,	 banooye 2abi	,	 razan alzaghoul	,	 muu11 04	,	reemar official18	,	ishitaaa 10	,	upsoclmuvi	,	undercover.id 	,	 princu920	,	Lucia Micaela	,
+pesopluma	,	Newclear Hansa J 	,	Cassandra.	,	 laneksa7	,	rojin akn 30	,	 chuol_nnyawurh	,	 mohamadraza 9	,	 zahra.zz40	,	banooye 2abi	,	razan alzaghoul	,	muu11 04	,	reemar official18	,	ishitaaa 10	,	Upsocl Muvi	,	undercover.id	,	princu920	,	 cocacarlyxoxo	,
+La Doble P	,	teddynutty	,	 _.iamnelly._	,	laneksa7	,	Rojin Akın	,	chuol_nnyawurh	,	mohamadraza 9	,	zahra.zz40	,	نگار بلاگر روزمرگی بختیاری	,	رزان    🇯🇴ᎡᎯᏃᎯᏁ🦅	,	MoM	,	Reemar Martin	,	Ishita Mishra   Influencer	,	jcamilopulgarin	,	KRITIS  INFORMATIF  EDUKATIF	,	Princess Shreeya	,	cocacarlyxoxo	,
+jasllasm 	,	teddynutty	,	_.iamnelly._	,	Svetlana Alekseeva	,	 susannahoffsofficial	,	Nyawurh Chuol🇸🇸 ♎️	,	mohamadraza 9090	,	زهراجون	,	 clip lori75	,	 feruza sobolev	,	 montiiroy official	,	cindythiaap	,	hitirakhejaa	,	jcamilopulgarin	,	4maze 	,	 mamta219  	,	©️arly 🦄	,
+jasllasm 	,	nutty🐻🍩💕	,	𝒩𝑒𝓁𝓁𝓎	,	 1berfinaltunn	,	susannahoffsofficial	,	 cannaorsora	,	 taniya144  	,	 babimod 2	,	clip lori75	,	feruza sobolev	,	montiiroy official	,	cindythiaap	,	hitirakhejaa	,	Camilo Pulgarin	,	4maze	,	mamta219  	,	 salheartsss	,
+Jasmine Llamas	,	naeysaithann	,	 justlauriel	,	1berfinaltunn	,	Susanna Hoffs	,	cannaorsora	,	taniya144  	,	babimod 2	,	کلیپ لری	,	פרוזה סובולב	,	Montii Roy	,	RRQ Snow	,	Hiti Rakheja	,	ispylexa	,	4MΛZΞ	,	Mamta🔵	,	salheartsss	,
+alexiitha moreno	,	naeysaithann	,	justlauriel	,	Berfin Altun	,	 silagundogg	,	ASAWIR| أَسَاوِرْ	,	Taniya	,	 dubiati	,	 neda.raadfar	,	 zezoalameen	,	 cherylannggx2	,	vonnyfelicia	,	sonam xox	,	ispylexa	,	nganguyeen 	,	 ismailmistry	,	Sal	,
+alexiitha moreno	,	สายธาร หวังประเสริฐ	,	𝓛𝓪𝓾𝓻𝓲𝓮𝓵 𝓐. 𝓕𝓵𝓸𝔀𝓮𝓻𝓼	,	 arianasiney	,	silagundogg	,	 ohsonads	,	 anjali sharma.031	,	dubiati	,	neda.raadfar	,	zezoalameen	,	cherylannggx2	,	vonnyfelicia	,	sonam xox	,	Lexa Taylor	,	nganguyeen	,	ismailmistry	,	 hopebeel	,
+Alexiitha moreno	,	djtonhorm	,	 k.nay_	,	arianasiney	,	Sıla Özgür Gündoğ	,	ohsonads	,	anjali sharma.031	,	دوبیاتی	,	      mis.z.63     	,	Zeinab.	,	Cheryl Ann	,	vonzy	,	Sonam Singh	,	jacksontricks	,	Ngan Nguyen norajoy_official 	,	Ismail Mistry	,	hopebeel	,
+mai selfie91237	,	djtonhorm	,	k.nay_	,	Asrp Sidney	,	 millarosetv	,	نادين	,	Anjali 🌐	,	 golnazyari12	,	     mis.z.63     	,	 reem 1414. 	,	 muhammadfurqan181	,	catherineealicia	,	vaishnavichauguleee	,	jacksontricks	,	norajoy_official	,	 sweetcheeksbunny	,	Hope Beel	,
+mai selfie91237	,	ศกุนตลา เทียนไพโรจน์	,	KN👑	,	 x ela 734 	,	millarosetv	,	 nyamal.solomon	,	 mohammad.jalali75	,	golnazyari12	,	👑﷽👑	,	reem 1414. 	,	muhammadfurqan181	,	catherineealicia	,	vaishnavichauguleee	,	Lina⚡	,	Norajoy 노라조이	,	sweetcheeksbunny	,	 arshad_warsi	,
+Mai	,	isabelaramireezoficial	,	 grannygodumbest	,	x ela 734 	,	Milla Rose	,	nyamal.solomon	,	mohammad.jalali75	,	golnaz	,	 org maryam 	,	ريم الحربي .🦌	,	Muhammad Furqan	,	Catheez	,	Vaish	,	onlycecejoy	,	ellmari.e 	,	E M	,	arshad_warsi	,
+ai ryj	,	isabelaramireezoficial	,	grannygodumbest	,	x ece .dly	,	 ilknurrrsuu	,	Nyamal	,	Mohammad Jalali	,	 nafas.mahtab.1360	,	org maryam 	,	 halool 278	,	 jaya.ahsan	,	anastasyakh	,	phmelons	,	onlycecejoy	,	ellmari.e	,	 finley.jarvis439	,	Arshad Warsi	,
+
+
+
+
+
+
+
+
+
+</div></div></div></span>
+<script>bwstoc();</script>
+</div>
+                
+                
+            </div>
+
+            <!-- Rating -->
+            {% if page.rating %}
+            <div class="rating mb-4 d-flex align-items-center">
+                <strong class="mr-1">Rating:</strong> {% include star_rating.html %}
+            </div>
+            {% endif %}
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+                {% if page.last_modified_at %}
+                (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+                {% endif %}
+                </small>
+            </p>
+
+            <!-- Post Categories
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    {% assign sortedCategories = page.categories | sort %}
+                    {% for category in sortedCategories %}
+                    <li>
+                        <a class="smoothscroll" href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    {% assign sortedTags = page.tags | sort %}
+                    {% for tag in sortedTags %}
+                    <li>
+                        <a class="smoothscroll" href="{{site.baseurl}}/tags#{{ tag | replace: " ","-" }}">#{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+
+
+            
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+{% if page.comments != false %}
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                {% include disqus.html %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+{% if page.rating %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Thing",
+    "name": "{{ page.title }}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ author.display_name }}"
+  },
+  "datePublished": "{{ page.date | date:"%Y-%m-%d" }}",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ page.rating }}",
+    "bestRating": "5"
+  }
+}
+</script>
+{% endif %}

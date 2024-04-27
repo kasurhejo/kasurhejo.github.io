@@ -1,0 +1,320 @@
+---
+layout: default
+disqus: false
+archive: false
+post_class: post-template
+---
+
+<!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            {% include share.html %}
+        </div>
+
+        <!-- Post -->
+        {% assign author = site.authors[page.author] %}
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">{{ page.title }}</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            {% if site.adsense == "enabled" %}
+                {% include adsense-under-header.html %}
+            {% endif %}
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            {% if page.image %}
+
+            {% if site.lazyimages == "enabled" %}
+            <img class="featured-image img-fluid lazyimg" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII=" data-src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            {% else %}
+            <img class="featured-image img-fluid" src="{% if page.image contains "://" %}{{ page.image }}{% else %}{{ site.baseurl }}/{{ page.image }}{% endif %}" alt="{{ page.title }}">
+            {% endif %}
+
+            {% endif %}
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                {% if page.toc %}
+                    {% if page.beforetoc %}
+                        <p><em>{{page.beforetoc}}</em></p>
+                    {% endif %}
+                    <div class="toc mt-4 mb-4 lead">
+                        <h3 class="font-weight-bold">Summary</h3>
+                        {% include toc.html html=content %}
+                    </div>
+                {% endif %}
+                <!-- End Toc -->
+               
+                <style media='all' type='text/css'>
+.bwstoc {
+ margin: 10px 0;
+ background: #F0F0F0;
+ border: 1px solid #ddd;
+}
+.bwstoc ol, .bwstoc ul {
+ margin: 0 0 15px 20px;
+ padding: 0;
+}
+.bwstoc ul {
+ list-style: disc;
+}
+.bwstoc ol li, .bwstoc ul li {
+ font-size: 95%;
+ padding: 5px 10px 0 0;
+ margin: 0 0 0 30px;
+}
+.bwstoc a {
+ text-decoration: none;
+}
+.bwstoc a:hover {
+ text-decoration: underline;
+}
+.bwstoc .bwstocHeader {
+ font-weight: bold;
+ font-size: 100%;
+ position: relative;
+ outline: none;
+ border: none;
+ padding: 5px 15px 5px 5px;
+ margin: 5px 10px;
+}
+.bwstoc .bwstocHeader a {
+ text-decoration: none;
+ cursor: pointer;
+}
+.bwstoc .bwstocHeader a:hover {
+ text-decoration: underline;
+}
+</style>
+<!-- Blogger TOC -->
+<script type='text/javascript'>
+//<![CDATA[
+function bwstoc() {
+ var bwstoc = i = headinglength = getheading = 0;
+ headinglength = document.getElementById("post-toc").querySelectorAll("h2, h3, h4").length;
+ if (headinglength > 1) { 
+ // Hanya Tampil Jika Ditemukan Minimal 2 Heading
+ for (i = 0; i < headinglength; i++) {
+ getheading = document.getElementById("post-toc").querySelectorAll("h2, h3, h4")[i].textContent;
+ var bws_1 = getheading.replace(/[^a-z0-9]/gi," ");
+ var bws_2 = bws_1.trim();
+ var getHeadUri = bws_2.replace(/s/g, "_");
+ document.getElementById("post-toc").querySelectorAll("h2, h3, h4")[i].setAttribute("id", getHeadUri);
+ bwstoc = "<li><a href='#" + getHeadUri + "'>" + getheading + "</a></li>";
+ document.getElementById("bwstoc").innerHTML += bwstoc;
+ }
+ } else { document.write("<style>.bwstoc{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;}</style>"); }
+}
+function bwstocShow() {
+    var bwstocBtn = document.getElementById('bwstoc');
+ var bwstocWrapID = document.getElementById('bwstocwrap');
+ var bwstocLink = document.getElementById('bwstocLink');
+    if (bwstocBtn.style.display === 'none') {
+        bwstocBtn.style.display = 'block';
+ bwstocWrapID.style.display = 'block';
+ bwstocLink.innerHTML = 'Content :';
+ 
+    } else {
+        bwstocBtn.style.display = 'none';
+ bwstocWrapID.style.display = 'inline-block';
+ bwstocLink.innerHTML = 'Content :';
+    }
+}
+//]]>
+</script>
+<noscript><style media='all' type='text/css'>#bwstocwrap,.bwstoc{display:none !important;visibility:hidden !important;width:0 !important;height:0 !important;}</style></noscript>
+
+<div id='post-toc'>
+
+
+
+<div id='bwstocwrap' class='bwstoc' style='display:inline-block;'><div class='bwstocHeader'><a id='bwstocLink' onclick='bwstocShow()'>Content :</a></div><ul id='bwstoc' style='display:none'></ul></div>
+
+
+<!--tuliskonten disini 🥰🥰🥰🥰🥰🥰 -->
+{{content}}
+<a id="show_id" onclick="document.getElementById('spoiler_id').style.display=''; document.getElementById('show_id').style.display='none';"></a><span id="spoiler_id" style="display: none;"><a class="link" onclick="document.getElementById('spoiler_id').style.display='none'; document.getElementById('show_id').style.display='';"></a>
+<div style="background-color: rgba(0, 0, 0, 0); margin: 1px;">
+<div class="smallfont"><i><span style="font-size: 16px; font-weight: bold; margin-right: 3px;"></span></i><input onclick="if (this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display != '') { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = ''; this.innerText = ''; this.value = ''; } else { this.parentNode.parentNode.getElementsByTagName('div')[1].getElementsByTagName('div')[0].style.display = 'none'; this.innerText = ''; this.value = ''; }" style="background-color: #00000000; font-size: 16px; width: auto;" type="button" value="" />
+</div>
+<div class="alt2" style="background-color: rgba(255, 255, 255, 0); margin: 0px; padding: 0px;">
+<div style="display: none;" loading="lazy">
+
+
+
+ady2 olivares	,	aum patchrapa	,	 cupid_kayyan_mata	,	sultan.ekc 	,	 poshlivkabak	,	Shani	,	ankitamallickxstan	,	 donyaartamy	,	gunash  amiri	,	eng tasnimballany	,	P R I Y A 🍁	,	halewwww	,	riddhi_nahata14	,	allbeauties247	,	Анастасія Ковальчук	,	india shemale 455	,	 lettydjm	,
+Adriana Olivarez	,	Patchrapa Chai	,	cupid_kayyan_mata	,	sultan	,	poshlivkabak	,	 amalrudwan	,	ankitamallickxstan	,	donyaartamy	,	 mary.amtrany	,	𝐓𝐀𝐒𝐍𝐈𝐌 𝐁𝐀𝐋𝐋𝐀𝐍𝐘   مستشارة تسويق الكتروني   𝐌𝐚𝐫𝐤𝐞𝐭𝐢𝐧𝐠	,	 dailyfashionwalks	,	halewwww	,	riddhi_nahata14	,	allbeauties247	,	zanderbotes8 	,	indian shemale	,	lettydjm	,
+ sandramars	,	biw vachira	,	CUPID_KAYAN_MATA	,	 bsr1ayz	,	 cansukyaa.34	,	amalrudwan	,	 mahsa ujul	,	دنیا جهانبخت	,	mary.amtrany	,	 ne3met.allah	,	dailyfashionwalks	,	HALEWWWW	,	Riddhi Nahata	,	Shane Cain’s beauties784	,	zanderbotes8	,	 its me menuka khatri	,	Leticia Moscoso	,
+ sandramars	,	biw vachira	,	 catgotyourwaist	,	bsr1ayz	,	cansukyaa.34	,	Amal Rudwan	,	mahsa ujul	,	 nasrin nax	,	🇮🇷💖مریم	,	ne3met.allah	,	Mandy Lee	,	s2k1m	,	_barr_bie_	,	dahriana_92	,	Zander Botes	,	its me menuka khatri	,	 sejinming	,
+Sandra Martinez	,	วชิราภรณ์ สมอาษา	,	catgotyourwaist	,	Büşra Ayaz	,	Cansu Kaya	,	 nevinneee	,	mahsa	,	nasrin nax	,	 nazanin badan	,	Naama Serri	,	 r2h.sigma	,	s2k1m	,	_barr_bie_	,	dahriana_92	,	woohye0n Miss Nina	,	Menuka Khatri	,	sejinming	,
+lexyasianbabe5	,	feen december1	,	Cat Got Your Waist	,	 bsr ksr31	,	 mubina.nazdej	,	nevinneee	,	 naznin.198	,	در مخاطبین شما	,	nazanin badan	,	 yagmurr.msx	,	r2h.sigma	,	김소희	,	Barbie kanya Bunloed	,	Soltérass92	,	momo_nancyking 	,	 jrai32091	,	기묘한 기무세딘	,
+lexyasianbabe5	,	feen december1	,	 ayanasheree	,	bsr ksr31	,	mubina.nazdej	,	Nevine Fadlmula	,	naznin.198	,	 arezowbx	,	شما را دنبال می‌کند	,	yagmurr.msx	,	r2h.sigma💫	,	one piece id	,	symrann k	,	evanderholyfield	,	momo_nancyking	,	jrai32091	,	 jocewavy	,
+Lexie 💖	,	𝓕𝓮𝓮𝓷♨️	,	ayanasheree	,	Büş	,	Malu Holmirzayeva	,	 itstavvi	,	 yalldawix	,	arezowbx	,	 royaaa  musi fan	,	Yağmur Muş ✨	,	 beautifulflix	,	one piece id	,	symrann k	,	evanderholyfield	,	momo_nancyking	,	Sapana Rai	,	jocewavy	,
+janethmay o	,	maypitchy	,	UNRULY SHÉREE♛🇯🇲🇭🇹	,	 128 nisaaaa	,	 forever young online	,	itstavvi	,	yalldawix	,	 farzane d183	,	royaaa  musi fan	,	 s21.5	,	beautifulflix	,	One Piece Indonesia	,	Simran Kaur	,	EVANDER “REAL DEAL” HOLYFIELD	,	halewwwwaseli 	,	 kabitagurung5929	,	Joce (“Joss”)	,
+janethmay o	,	maypitchy	,	 timasavagex_fanpage	,	128 nisaaaa	,	forever young online	,	Tavi 💌🎧🪞🐚🪷	,	بیا تو 😊	,	farzane d183	,	فن پیج رویا موزیک	,	s21.5	,	Beautiful Queens	,	tenseislime_indo	,	beautyworld in	,	sammythighsreels	,	halewwwwaseli	,	kabitagurung5929	,	 denissefrancop	,
+Mayra Olvera	,	Pitchanart Sakhakorn	,	timasavagex_fanpage	,	Nisa	,	ЖЕНСКАЯ ОДЕЖДА   ШОУРУМ   ХАБАРОВСК	,	 emannanasr	,	 hafizc 09	,	فرزانه	,	  clip love 20	,	قمر💎 🇸🇦	,	 aamir  fan  page	,	tenseislime_indo	,	beautyworld in	,	sammythighsreels	,	HALEWWWW	,	Kabita Gurung	,	denissefrancop	,
+mar rcz3	,	baifernytpp	,	Melanin Queens	,	  kelebekk.038	,	 soheyla.zabihi	,	emannanasr	,	hafizc 09	,	 rahapit  028	,	 clip love 20	,	 joanna karaky	,	aamir  fan  page	,	Info   Spoiler Tensei Shitara Slime Datta Ken  Tensura  ✍️	,	𝗕𝗲𝗮𝘂𝘁𝘆𝘄𝗼𝗿𝗹𝗱✨	,	Sammy Thighs	,	inkyung97 	,	 seemaverma1071	,	Denisse Iridiane	,
+mar rcz3	,	baifernytpp	,	 marisalopes7788	,	 kelebekk.038	,	soheyla.zabihi	,	Eman Nasr	,	Official king of Indian	,	rahapit  028	,	کلیپ ترکی  موزیک ترکی	,	joanna karaky	,	official fan page	,	emilysteaparty	,	kimaya_srivasttava	,	isladelosmangos	,	inkyung97	,	seemaverma1071	,	 ilona.hontash	,
+marlencita🤍	,	Yonlada Tapang	,	marisalopes7788	,	🦋meloş kılıç🦋	,	سهیلا ذبیحی👸	,	 kenyagatluak	,	 roghe59465	,	رهاپیت	,	 knegarii890	,	Joanna Karaky جوانا كركي	,	 fazzu.trt	,	emilysteaparty	,	kimaya_srivasttava	,	isladelosmangos	,	강인경(卿卿) queennieklaire 	,	seema	,	ilona.hontash	,
+geoabreuuofc	,	jjenaanda	,	Marisa Lopes	,	  nnur10layn	,	 derya.turkkkk	,	kenyagatluak	,	roghe59465	,	 mahsa8.h1	,	knegarii890	,	 russuladell	,	fazzu.trt	,	emily rudd	,	Kimaya Srivasttava	,	Isla de Los Mangos	,	queennieklaire	,	 tanteesni	,	I L Ò N A H Ó N T A S H🥥	,
+geoabreuuofc	,	jjenaanda	,	 fatimahlynn_	,	 nnur10layn	,	derya.turkkkk	,	K E N Y A G A T L U A K	,	روخی بلوچم💎	,	mahsa8.h1	,	نگار شمارا دنبال میکند	,	russuladell	,	Faizan trt	,	jkt48 marsha	,	viralselfyy	,	tiendaropahombre	,	Queennie Klaire Castrodes	,	tanteesni	,	 annadurkiin	,
+Geovanna Abreu	,	𝓐𝓷𝓭𝓪𝓶𝓪𝓷	,	fatimahlynn_	,	nurmuşuum	,	Derya	,	 kienxo_	,	 alo v2rayng	,	MAHSA👑	,	 miss.mr73	,	رسل عادل	,	 telemundorealities	,	jkt48 marsha	,	viralselfyy	,	tiendaropahombre	,	ini_ceritaku03 	,	Tante Esni	,	annadurkiin	,
+ sxilorpluto	,	treethippayanipa 	,	𝐅á𝐭𝐢𝐦𝐚𝐡	,	 standupreelsciniz	,	 xeceherdm	,	kienxo_	,	alo v2rayng	,	 soomawx	,	miss.mr73	,	 al shahd.28	,	telemundorealities	,	Marsha Lenathea  3	,	Viral Selfy	,	Tienda De Ropa Multimarca Para Hombre	,	ini_ceritaku03	,	 bellabodhi.real	,	Anna Durkiin	,
+ sxilorpluto	,	treethippayanipa 	,	 angell.kay	,	standupreelsciniz	,	xeceherdm	,	A	,	وی پی ان تضمینی	,	soomawx	,	miss.vida	,	al shahd.28	,	Telemundo Realities	,	yourelvv	,	vibhu neha	,	photon_pilot	,	indah sari	,	bellabodhi.real	,	 helinkenzi	,
+tera s	,	ตรีทิพยนิภา ร 	,	angell.kay	,	stand up reelsciniz 🎬	,	Xecê Herdem	,	 suha.tilmiz	,	 zaribanoo267	,	سّومآ خانُوم	,	 zainab  ameri	,	᷂االشهد ✨ 𝘈𝘭 𝘴𝘩𝘢𝘩𝘥	,	 georgiamakesreels	,	yourelvv	,	vibhu neha	,	photon_pilot	,	pelangi_jendela_hati 	,	Bella Bodhi	,	helinkenzi	,
+enyely211	,	madi kat	,	Angell K	,	 gamze87905	,	 elifsaglam.m	,	suha.tilmiz	,	zaribanoo267	,	 shadi shoojaeii	,	zainab  ameri	,	 mayasa jardali	,	georgiamakesreels	,	Elvara caliva	,	Neha chauhan	,	Photon Pilot   Tech Maverick   Quantum Dreamer  	,	pelangi_jendela_hati	,	 official   1  3	,	Helin Su Kenzi	,
+enyely211	,	madi kat	,	 itsavagrey	,	gamze87905	,	elifsaglam.m	,	Suha (Soo-ha).	,	zari banoo	,	shadi shoojaeii	,	zainab ameri	,	mayasa jardali	,	Georgia Hart	,	jkt48 freya	,	celebappofficial	,	analy_bazan	,	🌈💕𝙋𝙚𝙡𝙖𝙣𝙜𝙞 𝙅𝙚𝙣𝙙𝙚𝙡𝙖 𝙃𝙖𝙩𝙞💕🌈	,	official   1  3	,	 vanessachristine	,
+Jessica bustos	,	Madison Kate ♡	,	itsavagrey	,	𝑮𝒂𝒎𝒛𝒆”❤️	,	𝓔𝓵𝓲𝓯 𝓢𝓪ğ𝓵𝓪𝓶🧜🏼‍♀️	,	 yourgurlnini	,	 zainab ameeri	,	شادی شجاعی	,	 rbf036209	,	ميّاسة جردلي   Mayasa Jardali	,	 cakesyreels	,	jkt48 freya	,	celebappofficial	,	analy_bazan	,	medi.arsi badte4cher 	,	official  	,	vanessachristine	,
+titiz europa 9	,	minnieprmt	,	Savagery X	,	 tudeynaz	,	 nur.sedabinici	,	yourgurlnini	,	zainab ameeri	,	 mohamad16552024	,	rbf036209	,	 yaraghv27	,	cakesyreels	,	Freya Jayawardana	,	Bollywood celebrity app	,	Analy Bazan	,	badte4cher	,	 suza6046	,	VANESSA CHRISTINE ♡	,
+titiz europa 9	,	minnieprmt	,	 r.anaeeee	,	tudeynaz	,	nur.sedabinici	,	Nini |	,	Zainab Ameeri	,	mohamad16552024	,	فاطمه شهرکی	,	yaraghv27	,	Cakesy 💕	,	awby __	,	shubhangi vishen	,	soy camilarojas	,	Ann	,	suza6046	,	 athiyashetty	,
+titiz europa	,	Paramita J 🐰 มินนี่ 	,	r.anaeeee	,	naz	,	Nurseda Binici	,	 ym_benjamin	,	 sani.17r	,	خانوم زند	,	 masihaabhman	,	yaraghazo27	,	 biancasouza monteiro	,	awby __	,	shubhangi vishen	,	soy camilarojas	,	jambikeras24jam_official 	,	Suza Suza	,	athiyashetty	,
+vbrandaao	,	faiweluree	,	𝑺𝒄𝒖𝒍𝒑𝒕𝑭𝒊𝒕𝑩𝒚𝑻𝒂𝒚	,	 tuanaygz	,	 taylor.demp	,	ym_benjamin	,	sani.17r	,	 miss.mr73	,	masihaabhman	,	 barbie   officiall	,	biancasouza monteiro	,	Awby Hameed	,	🐼	,	Camila Rojas	,	jambikeras24jam_official	,	 gurpreett44444	,	Athiya Shetty	,
+vbrandaao	,	faiweluree	,	 iyanya	,	tuanaygz	,	taylor.demp	,	YBM'Benjamin	,	sani	,	miss.mr73	,	مسیحابهمن اکس بت	,	barbie   officiall	,	Bianca Souza	,	update anime	,	sanjanahsassy	,	juancarloscoroneloficial	,	JK24 ♠️ JAMBI KERAS 24 JAM (AKUN RESMI JK)	,	gurpreett44444	,	 lenatheplug	,
+𝓥𝓪𝓷𝓮𝓼𝓼𝓪 𝓑𝓻𝓪𝓷𝓭𝓪𝓸 💋✨	,	ฝ้าย เวฬุรีย์ ดิษยบุตร	,	iyanya	,	Tuana Yağuz	,	Taylor Demp	,	 malaz_d	,	 sapna patel 92	,	miss.vida	,	 music.12000	,	Sara Ali	,	 priya luchi300k	,	update anime	,	sanjanahsassy	,	juancarloscoroneloficial	,	elsa.novias 	,	Gurpreet Kaur	,	lenatheplug	,
+01  stefany  	,	baifernbah	,	IT’S IYANYAAA 🦁	,	 korucu.hatice	,	 djmissmonique	,	malaz_d	,	sapna patel 92	,	 arezo.4a	,	music.12000	,	 anas.batayneh	,	priya luchi300k	,	Update Anime Indonesia	,	𝗦𝘂𝘇𝗶𝗲𝗲	,	Juan Carlos Coronel	,	elsa.novias	,	 funyyl0g	,	Lena The Plug	,
+01  stefany  	,	baifernbah	,	 ms.sakimo	,	korucu.hatice	,	djmissmonique	,	Malaz	,	सपना ❤️	,	arezo.4a	,	👑𝐒𝐀𝐑𝐈𝐍𝐀👑	,	anas.batayneh	,	Vip Boom 💥	,	spoiler onepiece	,	kajalexplore_fit	,	aryestradaa	,	Elsa Novia Sena	,	funyyl0g	,	 nanysanshe	,
+Stefany Vitória	,	baifernbah	,	ms.sakimo	,	Hatice Korucu	,	Miss Monique	,	 _zenuba	,	 yalda mofrd2024	,	🔹فالو ڪنید با ما همراه باشیـد🔹	,	 shadi shoojaeii	,	Anas Bataineh	,	 heenasaifi450	,	spoiler onepiece	,	kajalexplore_fit	,	aryestradaa	,	mellstroy_narezku 	,	funny	,	nanysanshe	,
+lia alvarez30	,	muey lala	,	Saki	,	 leyn7kr	,	 elh lyrics	,	_zenuba	,	yalda mofrd2024	,	 rags.bx	,	shadi shoojaeii	,	 ranasmag	,	heenasaifi450	,	SOPILER ONE PIECE	,	kajal mishra	,	𝓐𝓻𝔂 𝓔𝓼𝓽𝓻𝓪𝓭𝓪💙	,	Office Girl	,	 sonika awale	,	Nany ❤️‍🔥	,
+lia alvarez30	,	muey lala	,	 ala_nkolika	,	leyn7kr	,	elh lyrics	,	Sara Shadad	,	یلدا🤍	,	rags.bx	,	شادی شجاعی	,	ranasmag	,	Heena Saifi	,	mr brandonkent	,	onlybikinimodel	,	alberto fujimori pe	,	runsoeun 	,	sonika awale	,	 crush_kimcoka	,
+Lía Álvarez	,	ดอกเหมย สาวหมอลำซิ่ง	,	ala_nkolika	,	Aleyna	,	ʙʟᴀᴄᴋ   ᴡʜɪᴛᴇ 🖤🎧	,	 adut_atem	,	 sanaz100k	,	رقص	,	 nasrin azizi00	,	Rana Nassour	,	 symrann.k	,	mr brandonkent	,	onlybikinimodel	,	alberto fujimori pe	,	runsoeun	,	 sonika 	,	crush_kimcoka	,
+knockknocklife	,	ferno padgone	,	Miranda Nwosu	,	 kimbulawiniaaaa	,	 queens of ukraine	,	adut_atem	,	sanaz100k	,	 nedawmod	,	nasrin azizi00	,	 mikmooka	,	symrann.k	,	brandonkentjana	,	🅑🅘🅚🅘🅝🅘   🅜🅞🅓🅔🅛🅢   🅞🅝🅛🅨	,	Alberto Fujimori	,	김 소은	,	 bellethebabex	,	김코카 | 웨이트 | 골프 | 운동루틴공유 | 건강하게 갓생살기✨	,
+knockknocklife	,	ferno padgone	,	 leanna2_fitt	,	kimbulawiniaaaa	,	queens of ukraine	,	Adut A Kiir	,	شمارادنبال میکند	,	nedawmod	,	نسرین عزیزی	,	mikmooka	,	Simran Kaur	,	tarankaaa	,	_allison_fiona_	,	rigobertouran	,	mindcruster 	,	bellethebabex	,	 dylanthiry	,
+hermosalatina1	,	Passakorn Ponlaboon	,	leanna2_fitt	,	KİMBULAWİNİA	,	 llobebi	,	 elchuvickthevypah	,	 raa.  .hil	,	کلیپ طنز فان دابسمش	,	 shiva vosoogh	,	Malak Mohd	,	 akankshaaryaa	,	tarankaaa	,	_allison_fiona_	,	rigobertouran	,	mindcruster	,	Belleeee	,	dylanthiry	,
+hermosalatina1	,	alejandradubon oficial	,	Leanna Cymone	,	 silaaydin541	,	llobebi	,	elchuvickthevypah	,	raa.  .hil	,	 aydawmod	,	shiva vosoogh	,	 ph.hala ammar	,	akankshaaryaa	,	Dasha Taran	,	Fiona Allison	,	Rigoberto Urán	,	𝗺𝗶𝗻𝗱𝗰𝗿𝘂𝘀𝘁𝗲𝗿.	,	 dandiwal9607	,	𝐃𝐘𝐋𝐀𝐍 𝐓𝐇𝐈𝐑𝐘	,
+Hermosa Latina	,	alejandradubon oficial	,	 kindheart1768	,	silaaydin541	,	lo lobebi	,	Elochukwuebuka Viktor Udensi	,	𝐑𝐚𝐚𝐡𝐢𝐥   راحيل	,	aydawmod	,	شیوا وثوق	,	ph.hala ammar	,	Akanksha Arya	,	alfachri_	,	aditimistry2607	,	carmencuevasvip	,	flaviacharallo 	,	dandiwal9607	,	 lexi_marvel	,
+thallygomes	,	🔱alejandra dubon🔱	,	kindheart1768	,	Sıla Aydın	,	 naintara832	,	 melanaire.feed	,	 esabrinagomes	,	ayda ⚛	,	 sanaz jun7	,	Hala Ammar	,	 skedititr09	,	alfachri_	,	aditimistry2607	,	carmencuevasvip	,	flaviacharallo	,	Mandeep Kuar Dandiwal	,	lexi_marvel	,
+thallygomes	,	margie rasri	,	 joygatwiriii	,	 hsnoff0a	,	naintara832	,	melanaire.feed	,	esabrinagomes	,	 bita.joon714	,	sanaz jun7	,	 motokup10ekipman	,	skedititr09	,	Al	,	Aditi Mistry	,	Carmensita😏	,	Flávia Charallo salasatihunafa 	,	 amneena2023	,	alexandra rae	,
+Thally🐧	,	margie rasri	,	joygatwiriii	,	hsnoff0a	,	Naintara Official	,	melanaire 🤎	,	𝐬𝐚𝐛𝐫𝐢𝐧𝐚 𝐠𝐨𝐦𝐞𝐬🌟	,	bita.joon714	,	شما را دنبال میکند	,	motokup10ekipman	,	Suraj Studio 🎙️	,	mythiavtuber	,	anjimaxuofficially	,	helenrgeorge	,	salasatihunafa	,	amneena2023	,	 thalia.mcix	,
+juli romero 23 	,	Margie Balenciaga	,	Joy Gatwiri	,	💌	,	 aysudeornek	,	 marandaseditorial	,	 esteghlal  taji98	,	bita.joon	,	 sahar soheyli8544	,	 saba.anagreh	,	 katy diamonds	,	mythiavtuber	,	anjimaxuofficially	,	helenrgeorge	,	salasati hunafa	,	AmNeena	,	thalia.mcix	,
+juli romero 23 	,	meanapt	,	 chuol_nnyawurh	,	 sildacemall	,	aysudeornek	,	marandaseditorial	,	esteghlal  taji98	,	 nasim.amirpoor73	,	sahar soheyli8544	,	saba.anagreh	,	katy diamonds	,	𝐌𝐲𝐭𝐡𝐢𝐚 𝐁𝐚𝐭𝐟𝐨𝐫𝐝	,	Anjali Arora	,	Helen George	,	unexpected.music_ 	,	 officialjudyjugs	,	Thalia Garcia Moran	,
+Juliana Romero	,	meanapt	,	chuol_nnyawurh	,	sildacemall	,	 nevaaus	,	Maranda Moore Talks 👑	,	esteghlal  taji	,	nasim.amirpoor73	,	Sahar soheyli	,	صَبا 🐎	,	Katy Diamond	,	caseykaspol	,	https tequilaa	,	amara_grayson_	,	unexpected.music_	,	officialjudyjugs	,	 liz.andrade26	,
+sevynnhop	,	Mean	,	Nyawurh Chuol🇸🇸 ♎️	,	Silda Cemall	,	nevaaus	,	 nyandengg	,	 farzadsalari muzic	,	نسیم امیرپور	,	 asal.l8852	,	 dahab.syr	,	 marii.marii.24	,	caseykaspol	,	https tequilaa	,	amara_grayson_	,	Unexpected Music	,	Jûggosaurus X	,	liz.andrade26	,
+sevynnhop	,	namnatcha  	,	 naturalbabepro	,	 samiyentransferr	,	neva	,	nyandengg	,	farzadsalari muzic	,	 nazgoll766	,	asal.l8852	,	dahab.syr	,	marii.marii.24	,	Casey Nathania	,	𝓉𝑒𝓆𝓊𝒾𝓁𝒶	,	AMARA GRAYSON	,	japan.nightlifes 	,	 radhikapatil 4511	,	Liz Andrade	,
+Sevynn Hop 🌸	,	namnatcha  	,	naturalbabepro	,	samiyentransferr	,	 civatasandiz	,	NYA	,	فرزاد سالاری	,	nazgoll766	,	 nasim.amirpoor73	,	دهوبة 🤍	,	Maria Quinonez	,	dokteranime	,	resmi_r_nair_office	,	gissewatson	,	japan.nightlifes	,	radhikapatil 4511	,	 itsilanosh	,
+mizzimie	,	น้ำหนึ่งง💐	,	Nikitha Cornwall✨	,	🇹🇷 Samiyen Transfer	,	civatasandiz	,	 monyaywak	,	 de.18899	,	nazgol	,	nasim.amirpoor73	,	 yxii91 	,	 baanisandhufanclub.in	,	dokteranime	,	resmi_r_nair_office	,	gissewatson	,	Japan Nightlife	,	राधिका 😍	,	itsilanosh	,
+
+
+
+
+
+
+
+
+
+</div></div></div></span>
+<script>bwstoc();</script>
+</div>
+                
+                
+            </div>
+
+            <!-- Rating -->
+            {% if page.rating %}
+            <div class="rating mb-4 d-flex align-items-center">
+                <strong class="mr-1">Rating:</strong> {% include star_rating.html %}
+            </div>
+            {% endif %}
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="{{ page.date | date:"%Y-%m-%d" }}">{{ page.date | date_to_string }}</time></span>           
+                {% if page.last_modified_at %}
+                (Updated: <time datetime="{{ page.last_modified_at | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_modified_at | date: "%b %-d, %Y" }}</time>)
+                {% endif %}
+                </small>
+            </p>
+
+            <!-- Post Categories
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    {% assign sortedCategories = page.categories | sort %}
+                    {% for category in sortedCategories %}
+                    <li>
+                        <a class="smoothscroll" href="{{site.baseurl}}/categories#{{ category | replace: " ","-" }}">{{ category }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    {% assign sortedTags = page.tags | sort %}
+                    {% for tag in sortedTags %}
+                    <li>
+                        <a class="smoothscroll" href="{{site.baseurl}}/tags#{{ tag | replace: " ","-" }}">#{{ tag }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+
+
+            
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+{% if page.comments != false %}
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                {% include disqus.html %}
+            </div>
+        </div>
+    </div>
+{% endif %}
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+{% if page.rating %}
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org/",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Thing",
+    "name": "{{ page.title }}"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "{{ author.display_name }}"
+  },
+  "datePublished": "{{ page.date | date:"%Y-%m-%d" }}",
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "{{ page.rating }}",
+    "bestRating": "5"
+  }
+}
+</script>
+{% endif %}
